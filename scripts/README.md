@@ -23,5 +23,5 @@ Invoke-RestMethod -Uri "https://raw.githubusercontent.com/stratusadv/developer/m
 
 Example:
 ```
-Invoke-RestMethod -Uri "https://raw.githubusercontent.com/stratusadv/developer/main/scripts/install-pycharm.ps1" | Invoke-Expression
+Invoke-RestMethod -Uri "https://raw.githubusercontent.com/stratusadv/developer/main/scripts/developer_setup.ps1" | Invoke-Expression
 ```
