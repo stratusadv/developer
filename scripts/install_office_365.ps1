@@ -2,13 +2,14 @@
 
 $ErrorActionPreference = "Stop"
 
-$installed = winget list --id Microsoft.Office
-if ($installed) {
+Write-Host "Installing Microsoft 365..." -ForegroundColor Cyan
+
+winget list --id "Microsoft.Office" | Out-Null
+if ($LASTEXITCODE -eq 0) {
     Write-Host "Microsoft 365 already installed. Skipping." -ForegroundColor Yellow
     exit 0
 }
 
-Write-Host "Microsoft 365 is not installed." -ForegroundColor Cyan
 Write-Host "Note: This requires Microsoft account sign-in, and needs an M365 license to activate." -ForegroundColor Yellow
 
 $response = Read-Host "Install Microsoft 365? (Y/N) [Y]"

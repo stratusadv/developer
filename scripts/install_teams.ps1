@@ -4,8 +4,8 @@ $ErrorActionPreference = "Stop"
 
 Write-Host "Installing Microsoft Teams..." -ForegroundColor Cyan
 
-$installed = winget list --id Microsoft.Teams
-if ($installed) {
+winget list --id "Microsoft.Teams" | Out-Null
+if ($LASTEXITCODE -eq 0) {
     Write-Host "Microsoft Teams already installed. Skipping." -ForegroundColor Yellow
     exit 0
 }
