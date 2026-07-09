@@ -4,8 +4,8 @@ $ErrorActionPreference = "Stop"
 
 Write-Host "Installing Docker Desktop..." -ForegroundColor Cyan
 
-$installed = winget list --id Docker.DockerDesktop
-if ($installed) {
+winget list --id "Docker.DockerDesktop" | Out-Null
+if ($LASTEXITCODE -eq 0) {
     Write-Host "Docker Desktop already installed. Skipping." -ForegroundColor Yellow
     exit 0
 }

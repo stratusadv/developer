@@ -4,8 +4,8 @@ $ErrorActionPreference = "Stop"
 
 Write-Host "Installing PyCharm Professional..." -ForegroundColor Cyan
 
-$installed = winget list --id JetBrains.PyCharm.Professional
-if ($installed) {
+winget list --id "JetBrains.PyCharm.Professional" | Out-Null
+if ($LASTEXITCODE -eq 0) {
     Write-Host "Pycharm Professional already installed. Skipping." -ForegroundColor Yellow
     exit 0
 }
