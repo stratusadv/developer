@@ -7,7 +7,7 @@ Write-Host "Installing Microsoft Teams..." -ForegroundColor Cyan
 winget list --id "Microsoft.Teams" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Microsoft Teams already installed. Skipping." -ForegroundColor Yellow
-    exit 0
+    return
 }
 
 try {

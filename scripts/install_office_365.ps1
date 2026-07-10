@@ -7,7 +7,7 @@ Write-Host "Installing Microsoft 365..." -ForegroundColor Cyan
 winget list --id "Microsoft.Office" | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Microsoft 365 already installed. Skipping." -ForegroundColor Yellow
-    exit 0
+    return
 }
 
 Write-Host "Note: This requires Microsoft account sign-in, and needs an M365 license to activate." -ForegroundColor Yellow
@@ -16,7 +16,7 @@ $response = Read-Host "Install Microsoft 365? (Y/N) [Y]"
 
 if ($response -ieq 'N') {
     Write-Host "Skipping Microsoft 365." -ForegroundColor Yellow
-    exit 0
+    return
 }
 
 Write-Host "Installing Microsoft 365 Package..." -ForegroundColor Cyan
