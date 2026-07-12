@@ -11,13 +11,14 @@ $scripts = @(
 
 $baseUrl = "https://raw.githubusercontent.com/stratusadv/developer/main/scripts"
 
+$isRemote = [string]::IsNullOrEmpty($PSScriptRoot)
+
 foreach ($script in $scripts) {
-    $localPath = Join-Path $PSScriptRoot $script
-    if (Test-Path $localPath) {
-        & $localPath
+    if ($isRemote) {
+        Invoke-RestMethod -Uri "$baseUrl/$script" | Invoke-Expression
     }
     else {
-        Invoke-RestMethod -Uri "$baseUrl/$script" | Invoke-Expression
+        & (Join-Path $PSScriptRoot $script)
     }
 }
 
